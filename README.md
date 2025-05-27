@@ -1,6 +1,6 @@
 # Zoo Database Management System
-Nick Kelley
-A Java Swing-based application for managing zoo operations
+- Nick Kelley
+- A Java Swing-based application for managing zoo operations
 
 ## Features
 - Task Management
