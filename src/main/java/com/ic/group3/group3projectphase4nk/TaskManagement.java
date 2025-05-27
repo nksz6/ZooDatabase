@@ -1,9 +1,5 @@
-//ICS311-01 -- Group 3 -- Nick Kelley -- TaskManagement
+package com.ic.group3.group3projectphase4nk;
 
-//package
-package com.ics311.group3.group3projectphase4nk;
-
-//imports
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//TaskManagement Class
 public class TaskManagement extends JFrame {
     
     //GUI components
@@ -184,8 +179,9 @@ public class TaskManagement extends JFrame {
             
             //populating
             while (rs.next()) {
-                String displayText = rs.getString("emp_ID") + " - " + rs.getString("full_name");
-                empIdComboBox.addItem(displayText);
+                String empId = rs.getString("emp_ID");
+                String fullName = rs.getString("full_name");
+                empIdComboBox.addItem(empId + " - " + fullName);
             }
             
             //catch issue
@@ -196,24 +192,17 @@ public class TaskManagement extends JFrame {
     
     //load location data into ComboBox
     private void loadLocations() {
-        
         //query for loc data
         String query = "SELECT location_code, location_name FROM Location ORDER BY location_code";
-        
         try (Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pst = conn.prepareStatement(query);
                 ResultSet rs = pst.executeQuery()) {
-            
-            //clear existing items
             locationComboBox.removeAllItems();
-            
-            //populating
-            while (rs.next()){
-                String displayText = rs.getString("location_code") + " - " + rs.getString("location_name");
-                locationComboBox.addItem(displayText);
+            while (rs.next()) {
+                String code = rs.getString("location_code");
+                String name = rs.getString("location_name");
+                locationComboBox.addItem(code + " - " + name);
             }
-            
-            //catch issue
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error Loading Locations: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -283,7 +272,7 @@ public class TaskManagement extends JFrame {
         
         //validating fields
         if (jobCode.isEmpty() || jobDesc.isEmpty() || empId == null || locationCode == null) {
-            JOptionPane.showMessageDialog(this, "FILL IN ALL THE FIELDS!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please fill in all of the fields!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -310,7 +299,7 @@ public class TaskManagement extends JFrame {
         
             //catch issue
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "ERROR ADDING TASK: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error Adding Task: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -322,7 +311,7 @@ public class TaskManagement extends JFrame {
         
         //validate you selected something
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "YOU NEED TO SELECT A TASK TO DELETE!", "Selection Required", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You need to select a task first!", "Selection Required", JOptionPane.WARNING_MESSAGE);
             return;    
         }
         
@@ -331,7 +320,7 @@ public class TaskManagement extends JFrame {
         String jobDesc = tableModel.getValueAt(selectedRow, 1).toString();
         
         //confirm you wanna delete it
-        int confirm = JOptionPane.showConfirmDialog(this, "ARE YOU SURE YOU WANNA DELETE IT?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you'd like to delete it?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             
             //query for deletion
@@ -346,7 +335,7 @@ public class TaskManagement extends JFrame {
                 pst.executeUpdate();
                 
                 //confirmation mesg
-                JOptionPane.showMessageDialog(this, "TASK DELETED SUCCESSFULLY!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully Deleted Task!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 
                 //refresh table
                 loadTasks();

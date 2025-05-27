@@ -1,4 +1,4 @@
-package com.ics311.group3.group3projectphase4nk;
+package com.ic.group3.group3projectphase4nk;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +25,7 @@ public class LocationGUI extends JFrame {
 
         txtLocationCode = new JTextField();
         txtLocationCode.setBounds(130, 20, 150, 25);
-        txtLocationCode.setEditable(false); // Location code is not editable
+        txtLocationCode.setEditable(false); //no editing location code
         add(txtLocationCode);
 
         JLabel lblLocationName = new JLabel("Location Name:");
