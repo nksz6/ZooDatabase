@@ -1,4 +1,4 @@
-package com.ics311.group3.group3projectphase4nk;
+package com.ic.group3.group3projectphase4nk;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,12 +21,12 @@ public class Launcher {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(10, 10, 10, 10);
         
-        // Buttons for tables
+        //buttons for tables
         JButton tasksButton = createButton("Tasks");
         JButton locationsButton = createButton("Locations");
         JButton employeesButton = createButton("Employees");
 
-        // Listeners for buttons
+        //listeners for buttons
         tasksButton.addActionListener(e -> {
             TaskManagement taskFrame = new TaskManagement();
             taskFrame.setVisible(true);
@@ -39,7 +39,7 @@ public class Launcher {
         
         employeesButton.addActionListener(e -> showFrame("Employees", "Manage employees."));
 
-        // Title for app
+        //title for app
         JLabel titleLabel = new JLabel("Zoo Application - Group 3");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -58,7 +58,7 @@ public class Launcher {
         buttonPanel.add(employeesButton, gbc);
 
         
-        // Logout button
+        //logout button
         JButton logoutButton = createButton("Logout");
         logoutButton.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(
@@ -87,7 +87,7 @@ public class Launcher {
         launcherFrame.setVisible(true);
     }
 
-    // Method for creating buttons
+    //method for creating buttons
     private static JButton createButton(String text) {
         JButton button = new JButton(text);
         button.setPreferredSize(new Dimension(150, 40));
@@ -98,7 +98,7 @@ public class Launcher {
         return button;
     }
 
-    // Method for jframes
+    //method for jframes
     private static void showFrame(String title, String message) {
         JFrame frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
