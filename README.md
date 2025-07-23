@@ -14,8 +14,9 @@ A Java Swing-based application for managing zoo operations
 
 ## Database Setup
 1. Install MySQL
-2. Create a new database
-3. create the tables
-4. clone the repo
-5. update the connection details in DatabaseConnection.java
-6. Run in NetBeans
+2. Create a new database.
+3. Create your own tables in the database.
+4. Clone the repository.
+5. Update the connection details in DatabaseConnection.java.
+6. Run in NetBeans.
+7. Enjoy!
