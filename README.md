@@ -1,6 +1,8 @@
 # Zoo Database Management System
 A Java Swing-based application for managing zoo operations
 
+![Homepage of Application](/assets/ZooApp-home.png)
+
 ## Features
 - Task Management
 - Location Management
@@ -20,3 +22,9 @@ A Java Swing-based application for managing zoo operations
 5. Update the connection details in DatabaseConnection.java.
 6. Run in NetBeans.
 7. Enjoy!
+
+## Extra Screenshots
+
+![A screenshot of the tasks page of my application.](/assets/ZooApp-tasks.png)
+
+![A screenshot of the locations page of my application.](/assets/ZooApp-Locations.png)
